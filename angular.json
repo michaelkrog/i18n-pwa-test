@@ -9,15 +9,25 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "da": {
+            "translation": "src/locale/messages.da.xlf"
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "localize":true,
             "outputPath": "dist/i18n-pwa-test",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -33,6 +43,7 @@
           },
           "configurations": {
             "production": {
+              "localize":["en-US","da"],
               "budgets": [
                 {
                   "type": "initial",
@@ -45,7 +56,8 @@
                   "maximumError": "4kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "serviceWorker": "ngsw-config.json"
             },
             "development": {
               "optimization": false,
@@ -75,7 +87,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
