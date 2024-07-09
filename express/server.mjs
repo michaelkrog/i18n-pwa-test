@@ -10,7 +10,7 @@ const app = express();
 app.use((req, res, next) => {
     // Detect language from accept-header
     const acceptedLanguages = accepts(req).languages();
-    let finalAcceptedLanguage = 'en';
+    let finalAcceptedLanguage = 'en-US';
     for (var i = 0; i < acceptedLanguages.length; i++) {
         const langElements = acceptedLanguages[i].split('-');
         var lang = langElements[0]?.toLocaleLowerCase();
